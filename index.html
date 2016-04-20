@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Table test</title>
+        <link rel='stylesheet prefetch' href='css/jquery-ui.css'>
+        <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Blaa</h1>
+            <div id="table" class="table-editable">
+                <span class="table-add glyphicon glyphicon-plus"></span>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Id</th>
+                        <th>Relationship</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td contenteditable="true">name</td>
+                        <td contenteditable="true">id</td>
+                        <td id="relationship"></td>
+                        <td>
+                            <span class="table-remove glyphicon glyphicon-remove"></span>
+                        </td>
+                        <td>
+                            <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                            <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                        </td>
+                    </tr>
+                    <!-- This is our clonable table line -->
+                    <tr class="hide">
+                        <td contenteditable="true">name</td>
+                        <td contenteditable="true">id</td>
+                        <td id="relationship"></td>
+                        <td>
+                            <span class="table-remove glyphicon glyphicon-remove"></span>
+                        </td>
+                        <td>
+                            <span class="table-up glyphicon glyphicon-arrow-up"></span>
+                            <span class="table-down glyphicon glyphicon-arrow-down"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button id="export-btn" class="btn btn-primary">Export Data</button>
+            <p id="export"></p>
+        </div>
+        <script src='lib/jquery.min.js'></script>
+        <script src='lib/jquery-ui.min.js'></script>
+        <script src='lib/bootstrap.min.js'></script>
+        <script src='lib/underscore.js'></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
