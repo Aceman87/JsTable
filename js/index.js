@@ -1,9 +1,11 @@
+var rowCount = 1;
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  $clone = replaceText($clone);
   $TABLE.find('table').append($clone);
 });
 
@@ -52,3 +54,31 @@ $BTN.click(function () {
   // Output the result
   $EXPORT.text(JSON.stringify(data));
 });
+
+function replaceText(row) {
+	var rowNumber = rowCount++;
+	var nameCell = row.find('td.name');
+	var nameText = nameCell[0].textContent;
+	nameCell[0].textContent = nameText.replace("name", getCharFromInt(rowNumber));
+	var idCell = row.find('td.id');
+	var idText = idCell[0].textContent;
+	idCell[0].textContent = idText.replace("id", rowNumber);
+	return row;
+}
+
+//for (var i=0; i<100; i++){console.log(getCharFromInt(i))}
+function getCharFromInt(code) {
+	var asciiOffset = 65;
+	return String.fromCharCode(code + asciiOffset);
+
+/*	var asciiOffset = 65;
+	var asciiCapsEnd = 90;
+	var div = Math.floor(code/25);
+	//console.log("DIV: ",div);
+	code += asciiOffset;
+	if (code > asciiCapsEnd) {
+		return String.fromCharCode(div + asciiOffset - 1) + getCharFromInt(code - asciiCapsEnd - 1);
+	} else {
+		return String.fromCharCode(code);
+	}*/
+}
