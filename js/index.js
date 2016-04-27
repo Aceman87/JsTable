@@ -59,7 +59,7 @@ function replaceText(row) {
 	var rowNumber = rowCount++;
 	var nameCell = row.find('td.name');
 	var nameText = nameCell[0].textContent;
-	nameCell[0].textContent = nameText.replace("name", getCharFromInt(rowNumber));
+	nameCell[0].textContent = nameText.replace("name", getCharFromInt(rowNumber+1));
 	var idCell = row.find('td.id');
 	var idText = idCell[0].textContent;
 	idCell[0].textContent = idText.replace("id", rowNumber);
@@ -68,17 +68,14 @@ function replaceText(row) {
 
 //for (var i=0; i<100; i++){console.log(getCharFromInt(i))}
 function getCharFromInt(code) {
-	var asciiOffset = 65;
-	return String.fromCharCode(code + asciiOffset);
-
-/*	var asciiOffset = 65;
-	var asciiCapsEnd = 90;
-	var div = Math.floor(code/25);
-	//console.log("DIV: ",div);
-	code += asciiOffset;
-	if (code > asciiCapsEnd) {
-		return String.fromCharCode(div + asciiOffset - 1) + getCharFromInt(code - asciiCapsEnd - 1);
-	} else {
-		return String.fromCharCode(code);
-	}*/
+    var columnString = "";
+    var columnNumber = code;
+    while (columnNumber > 0)
+    {
+        var currentLetterNumber = (columnNumber - 1) % 26;
+        var currentLetter = String.fromCharCode(currentLetterNumber + 65);
+        columnString = currentLetter + columnString;
+        columnNumber = (columnNumber - (currentLetterNumber + 1)) / 26;
+    }
+    return columnString;
 }
